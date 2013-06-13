@@ -1,0 +1,1 @@
+/home/ryansb/.dotfiles/zlogin
