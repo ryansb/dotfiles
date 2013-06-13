@@ -1,0 +1,48 @@
+[user]
+	name = Ryan S. Brown
+	email = sb@ryansb.com
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --date=relative
+	ls = log --color --graph --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --all
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --numstat
+	l1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --numstat -1
+	ld = log --pretty=format:'%C(yellow)%h%Creset %Cgreen%ad%Cred%d %Creset%s%Cblue [%cn]%Creset' --decorate --date=relative
+	fl = log -u
+	f = "!git ls-files | grep -i"
+	la = "!git config -l | grep alias | cut -c 7-"
+	stat = log --stat --format=oneline --decorate --abbrev-commit
+	lasttag = describe --tags --abbrev=0
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+[rebase]
+	stat = yes
+[branch]
+	autosetuprebase = always
+[mergetool]
+	keepBackup = yes
+[color]
+	ui = auto
+	[color "branch"]
+		current = green
+		local = yellow
+		remote = red
+	[color "diff"]
+		meta = yellow bold
+		frag = magenta bold
+		old = red bold
+		new = green bold
+	[color "status"]
+		added = green
+		changed = yellow
+		untracked = red
+[core]
+	pager = less -r
+
