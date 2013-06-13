@@ -5,7 +5,7 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-ZDOTDIR="$HOME/.dotfiles"
+export ZDOTDIR="$HOME/.dotfiles/zsh"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
