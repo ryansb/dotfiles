@@ -1,0 +1,108 @@
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' disable bzr cdv darcs mtn svk tla p4 fossil cvs svn
+zstyle ':vcs_info:*' branchformat '%b'
+zstyle ':vcs_info:*' formats '%s|%b%u%c|%0.6i'
+zstyle ':vcs_info:*' get-revision true
+zstyle ':vcs_info:*' stagedstr '^[[38;5;208m✔^[[38;5;065m'
+zstyle ':vcs_info:*' unstagedstr '^[[38;5;231m✗^[[38;5;065m'
+
+function show_typofree() {
+    echo -e "\e[38;05;016m016TEST"
+    echo -e "\e[38;05;028m028TEST"
+    echo -e "\e[38;05;065m065TEST"
+    echo -e "\e[38;05;067m067TEST"
+    echo -e "\e[38;05;088m088TEST"
+    echo -e "\e[38;05;094m094TEST"
+    echo -e "\e[38;05;127m127TEST"
+    echo -e "\e[38;05;130m130TEST"
+    echo -e "\e[38;05;137m137TEST"
+    echo -e "\e[38;05;208m208TEST"
+    echo -e "\e[38;05;209m209TEST"
+    echo -e "\e[38;05;215m215TEST"
+    echo -e "\e[38;05;231m231TEST"
+    echo -e "\e[38;05;236m236TEST"
+    echo -e "\e[38;05;238m238TEST"
+    echo -e "\e[38;05;240m240TEST"
+    echo -e "\e[38;05;247m247TEST"
+}
+
+prompt_ryansb_precmd () {
+    vcs_info prompt
+
+    # version control info
+    if [[ "x$vcs_info_msg_0_"  != "x" ]]; then
+        PR_vcs_info="${PR_op}%{$FG[065]%}$vcs_info_msg_0_%{$PR_rc%}${PR_cp}"
+    else
+        PR_vcs_info=""
+    fi
+
+    # Deal with virtualenv stuff
+    local venv_name="`basename \"$VIRTUAL_ENV\"`"
+    if [[ "x$venv_name" != "x" ]] ; then
+        PR_venv_name="${PR_op}%{$FG[209]%}$venv_name%{$PR_rc%}${PR_cp}"
+    else
+        PR_venv_name=""
+    fi
+}
+
+
+prompt_ryansb_setup () {
+    setopt LOCAL_OPTIONS
+    prompt_opts=(subst)
+    # P.C. Shyamshankar <sykora@lucentbeing.com>
+    # http://lucentbeing.com/blog/that-256-color-thing/
+    # Big thanks for awesome 256-color compatibility
+    typeset -Ag FX FG BG
+    FX=(
+        reset     "[00m"
+        bold      "[01m" no-bold      "[22m"
+        italic    "[03m" no-italic    "[23m"
+        underline "[04m" no-underline "[24m"
+        blink     "[05m" no-blink     "[25m"
+        reverse   "[07m" no-reverse   "[27m"
+    )
+    for color in {000..255}; do
+        FG[$color]="[38;5;${color}m"
+        BG[$color]="[48;5;${color}m"
+    done
+    # end P.C. Shyamshankar
+
+    # color codes from typofree.vim
+    # 016 028 065 067 088
+    # 094 127 130 137 208
+    # 209 215 231
+    # greys
+    # 236 238 240 247
+
+    # Set screen title
+    if [[ "$TERM" == "screen" ]]; then
+    PR_STITLE=$'%{\ekzsh\e\\%}'
+    else
+    PR_STITLE=''
+    fi
+
+    #set the bracket color
+    PR_bc=$FG[247]
+    PR_rc=$reset_color
+
+    #opening and closing parens
+    PR_op="%{$PR_bc%}─[%{$PR_rc%}"
+    PR_cp="%{$PR_bc%}]%{$PR_rc%}"
+
+    PR_path_p="${PR_op}%{$FG[208]%}%~%{$PR_rc%}${PR_cp}"
+    PR_user_host="${PR_op}%{$FG[215]%}%n@%m%{$PR_fg[cyan]%}${PR_cp}"
+
+    #conditional stuff
+    PR_ret_status="%(?,,${PR_op}%{$FG[088]%}%?%{$PR_rc%}${PR_cp})"
+    PR_smiley="%(?,%{$FG[028]%}:%)%{$PR_rc%},%{$FG[088]%}:(%{$PR_rc%})"
+
+    #and now, the prompt
+
+    PROMPT='%{$PR_bc%}╭%{$PR_rc%}${PR_path_p}%{$PR_bc%}%{$PR_rc%}${PR_user_host}${PR_ret_status}${PR_venv_name}${PR_vcs_info}
+%{$PR_bc%}╰%{$PR_rc%}${PR_op}${PR_smiley}${PR_cp} %# %{$FG[255]%}'
+PR_cur_cmd="${PR_op}%_${PR_cp}"
+PROMPT2="${PR_cur_cmd}> "
+}
+
+prompt_ryansb_setup
