@@ -11,7 +11,10 @@ echo "Getting spf13"
 sh <(curl http://j.mp/spf13-vim3 -L)
 
 echo "making symlinks"
-rcs="tmux.conf tmux gitconfig zpreztorc zshrc zlogin vimrc.local vimrc.bundles.local"
+rcs="tmux.conf tmux gitconfig vimrc.local vimrc.bundles.local"
 for rcfile in ${=rcs}; do
 	ln -s "$HOME/.dotfiles/$rcfile" "$HOME/.$rcfile" 
 done
+
+ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh/.zlogin ~/.zlogin
