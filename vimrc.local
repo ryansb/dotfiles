@@ -148,9 +148,6 @@ let g:pymode_breakpoint_key = '<leader>b'
 command PmOff let g:pymode_lint_checker = ""
 command PmOn let g:pymode_lint_checker = "pylint,pyflakes,pep8"
 
-" Git Gutter
-highlight clear SignColumn
-
 set nospell
 set nocursorline
 """"""Die, Error bells
