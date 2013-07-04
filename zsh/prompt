@@ -65,19 +65,6 @@ function prompt_ryansb_setup {
   # greys
   # 236 238 240 247
 
-  # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
-
-  zstyle ':vcs_info:*' disable bzr cdv darcs mtn svk tla p4 fossil cvs svn
-  zstyle ':vcs_info:*' branchformat '%b'
-  zstyle ':vcs_info:*' formats '%s|%b%u%c|%0.6i'
-  zstyle ':vcs_info:*' get-revision true
-  zstyle ':vcs_info:*' stagedstr '^[[38;5;208m✔^[[38;5;065m'
-  zstyle ':vcs_info:*' unstagedstr '^[[38;5;231m✗^[[38;5;065m'
-
   #set the bracket color
   PR_bc=$FG[247]
   PR_rc=$FG[255]
@@ -93,9 +80,24 @@ function prompt_ryansb_setup {
   PR_ret_status="%(?,,${PR_op}%{$FG[088]%}%?%{$PR_rc%}${PR_cp})"
   PR_smiley="%(?,%{$FG[028]%}:%)%{$PR_rc%},%{$FG[088]%}:(%{$PR_rc%})"
 
+  # Set editor-info parameters.
+  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format "%{$PR_bc%}%# %{$PR_rc%}"
+  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format "%{$FG[127]%}$ %{$PR_rc%}"
+
+  zstyle ':vcs_info:*' disable bzr cdv darcs mtn svk tla p4 fossil cvs svn
+  zstyle ':vcs_info:*' branchformat '%b'
+  zstyle ':vcs_info:*' formats '%s|%b%u%c|%0.6i'
+  zstyle ':vcs_info:*' get-revision true
+  zstyle ':vcs_info:*' stagedstr '[38;5;208m✔[38;5;065m'
+  zstyle ':vcs_info:*' unstagedstr '[38;5;067m✗[38;5;065m'
+  zstyle ':vcs_info:*' check-for-changes true
+
+
   #and now, the prompt
   PROMPT='%{$PR_bc%}╭%{$PR_rc%}${PR_path_p}%{$PR_bc%}%{$PR_rc%}${PR_user_host}${PR_ret_status}${PR_venv_name}${PR_vcs_info}
-%{$PR_bc%}╰%{$PR_rc%}${PR_op}${PR_smiley}${PR_cp} %{$PR_bc%}%# %{$PR_rc%}'
+%{$PR_bc%}╰%{$PR_rc%}${PR_op}${PR_smiley}${PR_cp} ${editor_info[keymap]}'
   PR_cur_cmd="%{$FG[208]%}%_${PR_cp}"
   PROMPT2='%{$PR_bc%}%_ |%{$PR_rc%} '
   SPROMPT='correct %F{red}%R%f to %F{green}%r%f [nyae]? '
