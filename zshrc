@@ -76,7 +76,8 @@ alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
 export AWS_CREDENTIAL_FILE="/etc/boto.aws.cfg"
 
-export PATH="$PATH:/home/ryansb/.golang/bin";
+export GOROOT="$HOME/.golang"
+export PATH="$PATH:$GOROOT/bin"
 
 ### aliases
 # git
@@ -109,6 +110,3 @@ alias fuck="pkill -9 -f"
 
 alias shuffledir="mplayer -playlist <(find \$PWD -type f|sort -R)"
 alias musicfind="grep -R --include=\"*.txt\" "
-
-# prompt
-xsource $HOME/.dotfiles/zshprompt
