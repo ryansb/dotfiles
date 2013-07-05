@@ -32,7 +32,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
+  'prompt' \
+  'custom'
 
 #
 # Editor
@@ -128,3 +129,8 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # Auto start a session when Zsh is launched.
 # zstyle ':prezto:module:tmux' auto-start 'yes'
 
+
+#
+# Custom Modules
+#
+zstyle ':prezto:module:custom' hackmode 'on'

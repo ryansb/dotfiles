@@ -28,33 +28,9 @@ xsource() {
     return 0
 }
 
-# automatically remove duplicates from these arrays
-typeset -U path cdpath fpath manpath
-
-# use vim keys
-#bindkey -v
-#
-## use vim or vi
-#if (( $+commands[vim] )) ; then
-#    export EDITOR=vim
-#else
-#    export EDITOR=vi
-#fi
-#
 #if (( $+commands[gvim] )) ; then
 #    alias vim="gvim -v"
 #fi
-
-
-# support colors in less
-#export LESS_TERMCAP_mb=$'\E[01;31m'
-#export LESS_TERMCAP_md=$'\E[01;31m'
-#export LESS_TERMCAP_me=$'\E[0m'
-#export LESS_TERMCAP_se=$'\E[0m'
-#export LESS_TERMCAP_so=$'\E[01;44;33m'
-#export LESS_TERMCAP_ue=$'\E[0m'
-#export LESS_TERMCAP_us=$'\E[01;32m'
-export LESS="-F -X -i -M -R -S -w -z-4 -a"
 
 # report about cpu-/system-/user-time of command if running longer than 5 seconds
 REPORTTIME=5
@@ -73,11 +49,6 @@ xsource /usr/bin/virtualenvwrapper.sh
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
-
-export AWS_CREDENTIAL_FILE="/etc/boto.aws.cfg"
-
-export GOROOT="$HOME/.golang"
-export PATH="$PATH:$GOROOT/bin"
 
 ### aliases
 # git
