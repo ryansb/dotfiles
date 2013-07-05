@@ -14,7 +14,10 @@ case $? in
 		local ZDOTDIR="${ZDOTDIR:-$HOME}"
 		zrecompile -q -p \
 			-M "$ZDOTDIR"/.zcompdump -- \
+			-R "$HOME"/.zshrc -- \
+			-R "$HOME"/.zlogin -- \
 			-R "$ZDOTDIR"/.zshrc -- \
+			-R "$ZDOTDIR"/.zlogin -- \
 			-R "$ZDOTDIR"/.zpreztorc -- \
 			-R "$ZDOTDIR"/.zshenv
 
