@@ -12,9 +12,6 @@ done
 ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/zsh/.zlogin ~/.zlogin
 
-echo "Getting spf13"
-sh <(curl http://j.mp/spf13-vim3 -L)
-
 echo "making symlinks"
 rcs="tmux.conf tmux gitconfig vimrc.local vimrc.bundles.local"
 for rcfile in ${=rcs}; do
