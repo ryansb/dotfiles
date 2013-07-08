@@ -1,6 +1,4 @@
 #!/bin/zsh
-echo "Getting zprezto"
-
 export ZDOTDIR=$HOME/.dotfiles/zsh
 
 setopt EXTENDED_GLOB
@@ -13,7 +11,7 @@ ln -s ~/.dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/zsh/.zlogin ~/.zlogin
 
 echo "making symlinks"
-rcs="tmux.conf tmux gitconfig vimrc.local vimrc.bundles.local"
+rcs="tmux gitconfig hgrc screenrc tmux.conf vimrc.bundles.local vimrc.local"
 for rcfile in ${=rcs}; do
 	ln -s "$HOME/.dotfiles/$rcfile" "$HOME/.$rcfile" 
 done
