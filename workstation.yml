@@ -19,13 +19,14 @@
       - gcc-c++
       - clang-devel
       - python-devel
-      - readline-devel
       - git
       - ack
       - mercurial
       - python-virtualenv
       - python-virtualenvwrapper
       - zeromq-devel
+      - readline-devel
+      - openssl-devel
       - R
       # needed for numpy/scipy/lxml
       - blas-devel
@@ -111,3 +112,15 @@
 
   - name: making R module dir
     file: path=~/.rlang/lib/ state=directory
+
+- name: Install misc servers
+  hosts: devservers
+  tags:
+    - servers
+
+  tasks:
+  - name: grabbing libssl.so.6 for dependencies
+    yum: name=$item state=latest
+    with_items:
+      - ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/6.0/x86_64/os/Packages/openssl098e-0.9.8e-17.el6.x86_64.rpm # for libssl.so.6 cleanup when possible
+      - http://packages.couchbase.com/releases/2.0.1/couchbase-server-community_x86_64_2.0.1.rpm
