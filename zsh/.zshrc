@@ -75,7 +75,7 @@ alias yolo="git commit -a -m 'deal with it.'; git push --force"
 # systems stuff
 # colorized live log
 alias llog="sudo tail -f /var/log/messages -n46"
-alias lsec2="list_instances -H ID,Zone,T:name,Key,Hostname,State"
+alias lsec2="list_instances -H ID,Zone,T:Name,Key,Hostname,State"
 alias rsync="noglob rsync -hv --progress"
 alias fuck="pkill -9 -f"
 
