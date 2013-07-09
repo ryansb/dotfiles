@@ -110,4 +110,4 @@
     shell: creates=~/.rvm curl -L https://get.rvm.io | bash -s stable --ruby
 
   - name: making R module dir
-    file: dest=~/.rlang/lib/
+    file: path=~/.rlang/lib/ state=directory
