@@ -26,6 +26,7 @@
       - python-virtualenv
       - python-virtualenvwrapper
       - zeromq-devel
+      - R
       # needed for numpy/scipy/lxml
       - blas-devel
       - lapack-devel
@@ -107,9 +108,6 @@
 
   - name: installing rvm
     shell: creates=~/.rvm curl -L https://get.rvm.io | bash -s stable --ruby
-
-  - name: installing R
-    yum: name=R state=latest
 
   - name: making R module dir
     file: dest=~/.rlang/lib/
