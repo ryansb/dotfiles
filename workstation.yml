@@ -65,7 +65,7 @@
 
   tasks:
   - name: clone dotfiles
-    action: shell git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
+    shell: creates=~/.dotfiles git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
     # TODO: when git module supports --recursive, change to that
     # git: repo=ssh://git@github.com/ryansb/dotfiles.git dest=~/.dotfiles
 
@@ -98,7 +98,7 @@
 
   tasks:
   - name: cloning golang
-    hg: repo=https://code.google.com/p/go dest=~/.golang revision=release
+    hg: repo=https://code.google.com/p/go dest=~/.golang revision=release force=yes
 
   - name: compiling golang
-    action: shell cd ~/.golang/src && ./all.sh
+    shell: chdir=~/.golang/src all.sh
