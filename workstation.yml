@@ -60,13 +60,15 @@
 - name: Entering Plugin Nirvana
   hosts: all
   sudo: False
+  tags:
+    - dotfiles
 
   tasks:
   - name: clone dotfiles
     action: shell git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
 
   - name: setting up dotfiles
-    action: shell ~/.dotfiles/dotfiles.sh
+    action: shell ~/.dotfiles/dotfiles.zsh
 
   - name: cloning golang
     hg: repo=https://code.google.com/p/go dest=~/.golang revision=release
