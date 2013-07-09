@@ -67,11 +67,26 @@
   - name: clone dotfiles
     action: shell git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
 
-  - name: setting up dotfiles
-    action: shell ~/.dotfiles/dotfiles.zsh
-
   - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
     action: shell curl http://j.mp/spf13-vim3 -L -o - | sh
+
+  - file: src=~/.dotfiles/zsh/.zshrc dest=~/.zshrc state=link
+  - file: src=~/.dotfiles/zsh/.zlogin dest=~/.zlogin state=link
+  - file: src=~/.dotfiles/zsh/custom dest=~/.dotfiles/zsh/.zprezto/modules/custom  state=link
+  - file: src=~/.dotfiles/zsh/prompt dest=~/.dotfiles/zsh/.zprezto/modules/prompt/functions/prompt_ryansb_setup state=link
+  - file: src=~/.dotfiles/zsh/.zprezto/runcoms/zlogout dest=~/.dotfiles/zsh/.zlogout state=link
+  - file: src=~/.dotfiles/zsh/.zprezto/runcoms/zprofile dest=~/.dotfiles/zsh/.zprofile state=link
+
+  - name: making misc symlinks
+    file: src=~/.dotfiles/$item dest=~/.$item state=link
+    with_items:
+      - tmux
+      - gitconfig
+      - hgrc
+      - screenrc
+      - tmux.conf
+      - vimrc.bundles.local
+      - vimrc.local
 
 - name: Install local golang
   hosts: workstations
