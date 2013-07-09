@@ -1,0 +1,75 @@
+---
+- name: installation tasks (sudo access required)
+  hosts: workstations
+  tasks:
+  - name: install dev tools
+    action: yum name=$item state=latest
+    with_items:
+      - vim-enhanced
+      - ranger
+      - tmux
+      - htop
+      - iotop
+      - mtr
+      - zsh
+      - make
+      - cmake
+      - automake
+      - gcc
+      - gcc-c++
+      - clang-devel
+      - python-devel
+      - readline-devel
+      - git
+      - ack
+      - mercurial
+      - python-virtualenv
+      - python-virtualenvwrapper
+      - zeromq-devel
+      # needed for numpy/scipy/lxml
+      - blas-devel
+      - lapack-devel
+      - atlas
+      - libxslt-devel
+      - libxml2-devel
+    tags:
+      - packages
+
+  - name: install user stuff
+    action: yum name=$item state=latest
+    with_items:
+      - levien-inconsolata-fonts
+      - mosh
+      - sshfs
+      - transmission-daemon
+      - transmission-cli
+      #- gnome-tweak-tool
+    tags:
+      - packages
+
+  - name: Determining username
+    action: shell whoami
+    register: whoami
+    sudo: False
+
+  - name: Changing the default shell to zsh
+    action: user shell=/bin/zsh user=${whoami.stdout}
+
+### NON ROOT TASKS
+
+- name: Entering Plugin Nirvana
+  hosts: all
+  sudo: False
+
+  tasks:
+  - name: clone dotfiles
+    action: shell git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
+
+  - name: setting up dotfiles
+    action: shell ~/.dotfiles/dotfiles.sh
+
+  - name: cloning golang
+    hg: repo=https://code.google.com/p/go dest=~/.golang revision=release
+
+  - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
+    action: shell curl http://j.mp/spf13-vim3 -L -o - | sh
