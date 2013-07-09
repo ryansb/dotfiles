@@ -98,7 +98,7 @@
 
   tasks:
   - name: cloning golang
-    hg: repo=https://code.google.com/p/go dest=~/.golang revision=release force=yes
+    shell: creates=~/.golang hg clone -u release https://code.google.com/p/go ~/.golang
 
   - name: compiling golang
-    shell: chdir=~/.golang/src all.sh
+    shell: chdir=~/.golang/src ~/.golang/src/all.bash
