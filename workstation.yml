@@ -58,7 +58,7 @@
 ### NON ROOT TASKS
 
 - name: Entering Plugin Nirvana
-  hosts: all
+  hosts: workstations
   sudo: False
   tags:
     - dotfiles
@@ -70,8 +70,18 @@
   - name: setting up dotfiles
     action: shell ~/.dotfiles/dotfiles.zsh
 
+  - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
+    action: shell curl http://j.mp/spf13-vim3 -L -o - | sh
+
+- name: Install local golang
+  hosts: workstations
+  sudo: False
+  tags:
+    - source
+
+  tasks:
   - name: cloning golang
     hg: repo=https://code.google.com/p/go dest=~/.golang revision=release
 
-  - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
-    action: shell curl http://j.mp/spf13-vim3 -L -o - | sh
+  - name: compiling golang
+    action: shell cd ~/.golang/src && ./all.sh
