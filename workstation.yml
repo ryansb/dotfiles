@@ -66,6 +66,8 @@
   tasks:
   - name: clone dotfiles
     action: shell git clone --recursive git@github.com:ryansb/dotfiles ~/.dotfiles
+    # TODO: when git module supports --recursive, change to that
+    # git: repo=ssh://git@github.com/ryansb/dotfiles.git dest=~/.dotfiles
 
   - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
     action: shell curl http://j.mp/spf13-vim3 -L -o - | sh
