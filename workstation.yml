@@ -104,7 +104,7 @@
     shell: creates=~/.golang hg clone -u release https://code.google.com/p/go ~/.golang
 
   - name: compiling golang
-    shell: chdir=~/.golang/src ~/.golang/src/all.bash
+    shell: chdir=~/.golang/src ~/.golang/src/make.bash
 
   - name: installing rvm
     shell: creates=~/.rvm curl -L https://get.rvm.io | bash -s stable --ruby
