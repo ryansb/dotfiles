@@ -89,6 +89,8 @@
       - tmux.conf
       - vimrc.bundles.local
       - vimrc.local
+      - Rprofile
+      - Renviron
 
 - name: Install local golang
   hosts: workstations
@@ -102,3 +104,12 @@
 
   - name: compiling golang
     shell: chdir=~/.golang/src ~/.golang/src/all.bash
+
+  - name: installing rvm
+    shell: curl -L https://get.rvm.io | bash -s stable --ruby
+
+  - name: installing R
+    yum: name=R state=latest
+
+  - name: making R module dir
+    file: dest=~/.rlang/lib/
