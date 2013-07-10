@@ -49,6 +49,7 @@ path=(
   $path
   /usr/local/{bin,sbin}
   $GOROOT/bin
+  $HOME/.rvm/bin
 )
 
 #
