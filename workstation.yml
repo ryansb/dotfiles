@@ -72,7 +72,7 @@
     # git: repo=ssh://git@github.com/ryansb/dotfiles.git dest=~/.dotfiles
 
   - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
-    shell: creates=~/.spf13-vim-3 curl http://j.mp/spf13-vim3 -L -o - | sh
+    shell: creates=~/.spf13-vim-3 chdir=~/ curl http://j.mp/spf13-vim3 -L -o - | sh
 
   - file: src=~/.dotfiles/zsh/.zshrc dest=~/.zshrc state=link
   - file: src=~/.dotfiles/zsh/.zlogin dest=~/.zlogin state=link
@@ -108,7 +108,7 @@
     shell: chdir=~/.golang/src ~/.golang/src/make.bash
 
   - name: installing rvm
-    shell: creates=~/.rvm curl -L https://get.rvm.io | bash -s stable --ruby
+    shell: creates=~/.rvm chdir=~/ curl -L https://get.rvm.io | bash -s stable --ruby
 
   - name: making R module dir
     file: path=~/.rlang/lib/ state=directory
