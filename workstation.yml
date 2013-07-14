@@ -45,7 +45,6 @@
       - sshfs
       - transmission-daemon
       - transmission-cli
-      #- gnome-tweak-tool
     tags:
       - packages
 
@@ -94,7 +93,7 @@
       - Rprofile
       - Renviron
 
-- name: Install local golang
+- name: Install development languages from source
   hosts: workstations
   sudo: False
   tags:
@@ -105,7 +104,7 @@
     shell: creates=~/.golang hg clone -u release https://code.google.com/p/go ~/.golang
 
   - name: compiling golang
-    shell: chdir=~/.golang/src ~/.golang/src/make.bash
+    shell: creates=~/.golang chdir=~/.golang/src ~/.golang/src/make.bash
 
   - name: installing rvm
     shell: creates=~/.rvm chdir=~/ curl -L https://get.rvm.io | bash -s stable --ruby

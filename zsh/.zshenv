@@ -43,6 +43,7 @@ typeset -gU cdpath fpath mailpath path manpath
 export AWS_CREDENTIAL_FILE="/etc/boto.aws.cfg"
 
 export GOROOT="$HOME/.golang"
+export GOPATH="$HOME/remotes"
 
 # Set the list of directories that Zsh searches for programs.
 path=(
