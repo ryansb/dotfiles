@@ -56,6 +56,29 @@
   - name: Changing the default shell to zsh
     action: user shell=/bin/zsh user=${whoami.stdout}
 
+- name: gui workstation installation tasks (sudo access required)
+  hosts: gui-workstations
+  tasks:
+  - name: install gui tools
+    yum: name=$item state=latest
+    with_items:
+      - gnome-tweak-tool
+    tags:
+      - packages
+      - gui
+
+  - name: install nonfree programs and tools
+    shell: yum -y --nogpgcheck localinstall $item
+    with_items:
+      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm # Google Chrome
+      - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-19.noarch.rpm # rpmfusion
+      - https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-1.6.0-1.fedora.x86_64.rpm # dropbox
+      - http://download.virtualbox.org/virtualbox/4.2.16/VirtualBox-4.2-4.2.16_86992_fedora18-1.x86_64.rpm # VBox
+      - http://files.vagrantup.com/packages/95d308caaecd139b8f62e41e7add0ec3f8ae3bd1/vagrant_1.2.3_x86_64.rpm # Vagrant
+    tags:
+      - packages
+      - gui
+
 ### NON ROOT TASKS
 
 - name: Entering Plugin Nirvana
