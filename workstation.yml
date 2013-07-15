@@ -45,6 +45,7 @@
       - sshfs
       - transmission-daemon
       - transmission-cli
+      - pv
     tags:
       - packages
 
