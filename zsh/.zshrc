@@ -73,11 +73,12 @@ alias gr="git rebase"
 alias yolo="git commit -a -m 'deal with it.'; git push --force"
 
 # systems stuff
-# colorized live log
-alias llog="sudo tail -f /var/log/messages -n46"
+alias llog="sudo tail -f /var/log/messages -n46" # colorized live log
 alias lsec2="list_instances -H ID,Zone,T:Name,Key,Hostname,State"
 alias rsync="noglob rsync -hv --progress"
 alias fuck="pkill -9 -f"
+alias jq="/usr/local/bin/jq -C"
+alias jqn="/usr/local/bin/jq"
 
 alias shuffledir="mplayer -playlist <(find \$PWD -type f|sort -R)"
 alias musicfind="grep -R --include=\"*.txt\" "
