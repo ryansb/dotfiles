@@ -20,8 +20,9 @@
       - clang-devel
       - python-devel
       - git
-      - ack
       - mercurial
+      - ack
+      - protobuf-compiler
       - python-virtualenv
       - python-virtualenvwrapper
       - zeromq-devel

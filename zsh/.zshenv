@@ -49,6 +49,7 @@ export GOPATH="$HOME/remotes"
 path=(
   $path
   /usr/local/{bin,sbin}
+  $GOPATH/bin
   $GOROOT/bin
   $HOME/.rvm/bin
 )
