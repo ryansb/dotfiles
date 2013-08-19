@@ -10,6 +10,8 @@
       - tmux
       - htop
       - iotop
+      - iftop
+      - nload
       - mtr
       - zsh
       - make
@@ -20,6 +22,8 @@
       - clang-devel
       - python-devel
       - git
+      - tig
+      - ack
       - mercurial
       - ack
       - protobuf-compiler
@@ -49,6 +53,8 @@
       - pv
     tags:
       - packages
+  - name: imgur CLI
+    shell: creates=/usr/local/bin/imgur curl http://imgur.com/tools/imgurbash.sh > /usr/local/bin/imgur ; chmod a+x /usr/local/bin/imgur
 
   - name: Determining username
     action: shell whoami
@@ -64,6 +70,7 @@
   - name: install gui tools
     yum: name=$item state=latest
     with_items:
+      - cmus
       - gnome-tweak-tool
     tags:
       - packages
