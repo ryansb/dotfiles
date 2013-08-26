@@ -48,3 +48,7 @@
 
 [push]
 	default = simple
+[github]
+	user = ryansb
+[help]
+	autocorrect = 1
