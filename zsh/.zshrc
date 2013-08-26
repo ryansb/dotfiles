@@ -52,24 +52,9 @@ alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
 ### aliases
 # git
-alias g="git"
 alias gap="git add -p"
-alias gps="git push"
-alias gpa="git pull --all"
-alias gs="git status -s"
-alias glh="git ls | head"
-alias gsn="git status -s --untracked=no"
+alias gst="git status -s"
 alias gsss="echo \`gs -s|grep M|wc -l\`M,\`gs -s|grep D|wc -l\`D,\`gs -s|grep ??|wc -l\`?"
-alias gd="git diff"
-alias gdc="git diff --cached HEAD^"
-alias gss="git stash show"
-alias gsp="git stash pop"
-alias gst="git stash"
-alias gsl="git stash list"
-alias gsd="git stash drop"
-alias grc="git rebase --continue"
-alias gra="git rebase --abort"
-alias gr="git rebase"
 alias yolo="git commit -a -m 'deal with it.'; git push --force"
 
 # systems stuff
