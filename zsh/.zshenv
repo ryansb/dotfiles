@@ -50,10 +50,11 @@ export GOPATH="$HOME/remotes"
 # Set the list of directories that Zsh searches for programs.
 path=(
   $path
-  /usr/local/{bin,sbin}
+  /usr/local/{bin,sbin,heroku/bin}
   $GOPATH/bin
   $GOROOT/bin
   $HOME/.rvm/bin
+  /usr/local/heroku/bin
 )
 
 #
