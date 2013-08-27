@@ -56,6 +56,23 @@ alias gap="git add -p"
 alias gst="git status -s"
 alias gsss="echo \`gs -s|grep M|wc -l\`M,\`gs -s|grep D|wc -l\`D,\`gs -s|grep ??|wc -l\`?"
 alias yolo="git commit -a -m 'deal with it.'; git push --force"
+alias gcheat="echo 'Git
+Branch (b)
+Commit (c)
+Conflict (C)
+Data (d)
+Fetch (f)
+Grep (g)
+Index (i)
+Log (l)
+Merge (m)
+Push (p)
+Rebase (r)
+Remote (R)
+Stash (s)
+Submodule (S)
+Working Copy (w)'"
+alias gfull="less ~/.dotfiles/zsh/.zprezto/modules/git/alias.zsh"
 
 # systems stuff
 alias llog="sudo tail -f /var/log/messages -n46" # colorized live log
