@@ -54,6 +54,7 @@ alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
 # git
 alias gap="git add -p"
 alias gst="git status -s"
+alias gps="git push --set-upstream"
 alias gsss="echo \`gs -s|grep M|wc -l\`M,\`gs -s|grep D|wc -l\`D,\`gs -s|grep ??|wc -l\`?"
 alias yolo="git commit -a -m 'deal with it.'; git push --force"
 alias gcheat="echo 'Git
