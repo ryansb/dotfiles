@@ -47,8 +47,12 @@
     with_items:
       - levien-inconsolata-fonts
       - msimonson-anonymouspro-fonts
+      - terminus-fonts
+      - terminus-fonts-console
       - mosh
       - sshfs
+      - stow
+      - stow-doc
       - transmission-daemon
       - transmission-cli
       - pv
