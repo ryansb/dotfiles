@@ -57,6 +57,9 @@ Bundle 'Tuurlijk/typofree.vim'
 " Go Lang
     Bundle 'jnwhiteh/vim-golang'
     Bundle 'spf13/vim-gocode'
+    " context-based completion
+    Bundle 'Blackrush/vim-gocode'
+    Bundle 'dgryski/vim-godef'
 
 " Misc
     Bundle 'tpope/vim-markdown'

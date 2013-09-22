@@ -161,4 +161,12 @@ set autoread         "Re-read open files when they are changed outside Vim
 
 " GoLang linting
 exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+" autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+nnoremap <Leader>l :execute 'Lint' \| cwindow<CR>
+function! s:GoVet()
+    cexpr system("go vet " . shellescape(expand('%')))
+    copen
+endfunction
+command! GoVet :call s:GoVet()
+nnoremap <Leader>v :GoVet<CR>
 
