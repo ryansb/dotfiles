@@ -43,6 +43,8 @@ function server() {
     python -m SimpleHTTPServer "$port"
 }
 
+### CD frecency (a portmateau of frequency and recent)
+. ~/.dotfiles/zsh/z_cd_jumper/z.sh
 
 ### Python Environments
 xsource /usr/bin/virtualenvwrapper.sh

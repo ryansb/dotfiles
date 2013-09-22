@@ -4,3 +4,6 @@
 [submodule "zsh/custom/zaw"]
 	path = zsh/custom/zaw
 	url = https://github.com/zsh-users/zaw.git
+[submodule "zsh/z_cd_jumper"]
+	path = zsh/z_cd_jumper
+	url = https://github.com/rupa/z.git

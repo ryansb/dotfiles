@@ -46,6 +46,7 @@
     action: yum name=$item state=latest
     with_items:
       - levien-inconsolata-fonts
+      - msimonson-anonymouspro-fonts
       - mosh
       - sshfs
       - transmission-daemon
