@@ -1,4 +1,14 @@
 ---
+- name: installation for Fedora
+  hosts: fedora-workstations
+  tasks:
+  - name: install dev tools
+    action: yum name=$item state=latest
+    with_items:
+      - ranger
+    tags:
+      - packages
+
 - name: installation tasks (sudo access required)
   hosts: workstations
   tasks:
@@ -6,7 +16,6 @@
     action: yum name=$item state=latest
     with_items:
       - vim-enhanced
-      - ranger
       - tmux
       - htop
       - iotop
