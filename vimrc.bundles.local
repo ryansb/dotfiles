@@ -1,5 +1,5 @@
 let g:override_spf13_bundles="nopnopenope"
-let g:spf13_bundle_groups=['general', 'programming', 'go', 'python', 'neocomplcache']
+let g:spf13_bundle_groups=['general', 'programming', 'go', 'python', 'neocomplcache', "misc"]
         "let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'neocomplcache']
         "
 Bundle 'Tuurlijk/typofree.vim'
@@ -63,5 +63,8 @@ Bundle 'Tuurlijk/typofree.vim'
 
 " Misc
     Bundle 'tpope/vim-markdown'
+    Bundle 'tpope/vim-cucumber'
+    Bundle 'godlygeek/tabular'
+    Bundle 'quentindecock/vim-cucumber-align-pipes'
     Bundle 'spf13/vim-preview'
     Bundle 'Puppet-Syntax-Highlighting'
