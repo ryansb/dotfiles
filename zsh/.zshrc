@@ -89,3 +89,18 @@ alias shuffledir="mplayer -playlist <(find \$PWD -type f|sort -R)"
 alias musicfind="grep -R --include=\"*.txt\" "
 alias dupfind="find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-"
 alias chkansible="find . -name '*.yml' -not -path './roles/\*/files/\*' | xargs -t -n1 ansible-playbook --syntax-check"
+
+alias tm="tmux"
+
+# taskwarrior
+alias t="task"
+alias thudl="task add project:hudl"
+alias ta="task add"
+
+function idid {
+    echo "${@}" | mail -s 'Ryan did' hudl@team.idonethis.com
+    if [[ $? != 0 ]]
+    then
+        echo "failure $?"
+    fi
+}

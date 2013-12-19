@@ -44,7 +44,7 @@
 		changed = yellow
 		untracked = red
 [core]
-	pager = less -r
+	pager = less -R
 
 [push]
 	default = simple
