@@ -83,6 +83,9 @@ alias lsec2="list_instances -H ID,Zone,T:Name,Key,Hostname,State"
 alias rsync="noglob rsync -hv --progress"
 alias fuck="pkill -9 -f"
 alias jq="/usr/local/bin/jq -C"
+function jql {
+    /usr/local/bin/jq -C "${@}" | less
+}
 alias jqn="/usr/local/bin/jq"
 
 alias shuffledir="mplayer -playlist <(find \$PWD -type f|sort -R)"
