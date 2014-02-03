@@ -46,6 +46,9 @@ function server() {
 ### CD frecency (a portmateau of frequency and recent)
 . ~/.dotfiles/zsh/z_cd_jumper/z.sh
 
+### Vi Mode Enhancements
+export KEYTIMEOUT=1
+
 ### Python Environments
 xsource /usr/bin/virtualenvwrapper.sh
 export WORKON_HOME=$HOME/.virtualenvs
