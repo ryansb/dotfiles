@@ -100,7 +100,7 @@ alias tm="tmux"
 
 # taskwarrior
 alias t="task"
-alias thudl="task add project:hudl"
+alias thudl="task add +hudl"
 alias ta="task add"
 
 function idid {
@@ -109,4 +109,18 @@ function idid {
     then
         echo "failure $?"
     fi
+}
+
+function awsg {
+    # http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html
+    if (( ${#argv} < 3 )) ; then
+        echo 'usage: awsg MYGROUP 0 65535 [1.2.3.4]' >&2
+        echo 'if IP not provided automatically uses your public IP' >&2
+        return 1
+    fi
+    IPTOADD="$(curl -s ipv4.icanhazip.com)/32"
+    if (( ${#argv} == 4 )) ; then
+        IPTOADD="${4}/32"
+    fi
+    aws ec2 authorize-security-group-ingress --group-name "${1}" --from-port "${2}" --to-port "${3}" --ip-protocol tcp --cidr-ip "${IPTOADD}"
 }
