@@ -9,6 +9,15 @@
     tags:
       - packages
 
+- name: email clients
+  hosts: workstations
+  tasks:
+  - name: install mail software
+    action: yum name=$item state=latest
+    with_items:
+      - msmtp
+      - offlineimap
+
 - name: installation tasks (sudo access required)
   hosts: workstations
   tasks:
@@ -76,7 +85,7 @@
     sudo: False
 
   - name: Changing the default shell to zsh
-    action: user shell=/bin/zsh user=${whoami.stdout}
+    user: shell=/bin/zsh user=${whoami.stdout}
 
 - name: gui workstation installation tasks (sudo access required)
   hosts: gui-workstations
