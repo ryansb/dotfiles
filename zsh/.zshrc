@@ -111,10 +111,10 @@ function idid {
     fi
 }
 
-function awsg {
+function sg-range {
     # http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html
     if (( ${#argv} < 3 )) ; then
-        echo 'usage: awsg MYGROUP 0 65535 [1.2.3.4]' >&2
+        echo 'usage: sg-range MYGROUP 0 65535 [1.2.3.4]' >&2
         echo 'if IP not provided automatically uses your public IP' >&2
         return 1
     fi
@@ -123,4 +123,18 @@ function awsg {
         IPTOADD="${4}/32"
     fi
     aws ec2 authorize-security-group-ingress --group-name "${1}" --from-port "${2}" --to-port "${3}" --ip-protocol tcp --cidr-ip "${IPTOADD}"
+}
+
+function sg-single {
+    # http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html
+    if (( ${#argv} < 2 )) ; then
+        echo 'usage: sg-single MYGROUP 0 [1.2.3.4]' >&2
+        echo 'if IP not provided automatically uses your public IP' >&2
+        return 1
+    fi
+    IPTOADD="$(curl -s ipv4.icanhazip.com)/32"
+    if (( ${#argv} == 3 )) ; then
+        IPTOADD="${3}/32"
+    fi
+    aws ec2 authorize-security-group-ingress --group-name "${1}" --port "${2}" --ip-protocol tcp --cidr-ip "${IPTOADD}"
 }
