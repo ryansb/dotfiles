@@ -136,5 +136,5 @@ function sg-single {
     if (( ${#argv} == 3 )) ; then
         IPTOADD="${3}/32"
     fi
-    aws ec2 authorize-security-group-ingress --group-name "${1}" --port "${2}" --ip-protocol tcp --cidr-ip "${IPTOADD}"
+    aws ec2 authorize-security-group-ingress --group-name "${1}" --port "${2}" --protocol tcp --cidr "${IPTOADD}"
 }
