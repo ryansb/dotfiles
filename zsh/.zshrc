@@ -140,6 +140,6 @@ function sg-single {
 }
 
 function lssg {
-    # if an argument is provided, it is passed as a prefix search
-    aws ec2 describe-security-groups --region us-east-1|jq '.SecurityGroups | map(.GroupName) | unique ' | sed -e '1d' | sed -e '$d' | sed -e 's/.*"\(.*\)".*$/\1/' | grep --color=never "^${1}"
+    # if an argument is provided, it is passed as an egrep expression
+    aws ec2 describe-security-groups --region us-east-1| grep GroupName | sed -e 's/ *"GroupName": "\(.*\)".*/\1/' | sort -f | uniq | egrep --color=never -i -e "${1}"
 }
