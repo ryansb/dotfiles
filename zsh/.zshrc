@@ -138,3 +138,8 @@ function sg-single {
     fi
     aws ec2 authorize-security-group-ingress --group-name "${1}" --port "${2}" --protocol tcp --cidr "${IPTOADD}"
 }
+
+function lssg {
+    # if an argument is provided, it is passed as a prefix search
+    aws ec2 describe-security-groups --region us-east-1|jq '.SecurityGroups | map(.GroupName) | unique ' | sed -e '1d' | sed -e '$d' | sed -e 's/.*"\(.*\)".*$/\1/' | grep --color=never "^${1}"
+}
