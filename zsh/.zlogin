@@ -16,10 +16,12 @@ case $? in
 			-M "$ZDOTDIR"/.zcompdump -- \
 			-R "$HOME"/.zshrc -- \
 			-R "$HOME"/.zlogin -- \
+			-R "$HOME"/.zpreztorc -- \
+			-R "$HOME"/.zshenv -- \
 			-R "$ZDOTDIR"/.zshrc -- \
 			-R "$ZDOTDIR"/.zlogin -- \
 			-R "$ZDOTDIR"/.zpreztorc -- \
-			-R "$ZDOTDIR"/.zshenv
+			-R "$ZDOTDIR"/.zshenv --
 
 		# Set environment variables for launchd processes.
 		if [[ "$OSTYPE" == darwin* ]]; then
