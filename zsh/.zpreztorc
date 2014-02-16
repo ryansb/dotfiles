@@ -24,18 +24,20 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'ruby' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
   'completion' \
-  'prompt' \
+  'custom' \
+  'directory' \
+  'editor' \
+  'environment' \
   'git' \
-  'custom'
+  'history' \
+  'prompt' \
+  'rsync' \
+  'ruby' \
+  'spectrum' \
+  'syntax-highlighting' \
+  'terminal' \
+  'utility'
 
 #
 # Editor
