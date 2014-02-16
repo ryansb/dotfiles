@@ -57,6 +57,7 @@ alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
 ### aliases
 # git
+alias ghpr="gh pull-request"
 alias gap="git add -p"
 alias gst="git status -s"
 alias gps="git push --set-upstream"
