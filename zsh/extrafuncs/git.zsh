@@ -24,6 +24,8 @@ alias gfull="less ~/.dotfiles/zsh/.zprezto/modules/git/alias.zsh"
 # gh tool
 alias ghpr="gh pull-request"
 
+alias getgh="go get -u -v github.com/jingweno/gh"
+
 function quickpr {
     if (( ${#argv} < 2 )) ; then
         echo 'usage: quickpr newBranchName "Some commit message/PR title"' >&2

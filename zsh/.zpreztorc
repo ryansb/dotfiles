@@ -25,7 +25,6 @@ zstyle ':prezto:*:*' color 'yes'
 # The order matters.
 zstyle ':prezto:load' pmodule \
   'completion' \
-  'custom' \
   'directory' \
   'editor' \
   'environment' \
@@ -35,9 +34,9 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'ruby' \
   'spectrum' \
-  'syntax-highlighting' \
   'terminal' \
-  'utility'
+  'utility' \
+  'custom'
 
 #
 # Editor
