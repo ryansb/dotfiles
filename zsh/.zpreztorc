@@ -30,12 +30,12 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'git' \
   'history' \
-  'prompt' \
   'rsync' \
   'ruby' \
   'spectrum' \
   'terminal' \
   'utility' \
+  'prompt' \
   'custom'
 
 #
