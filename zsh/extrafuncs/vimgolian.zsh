@@ -15,3 +15,12 @@ function vimgolian {
         echo "rs.reconfig(${new_rs_conf})" | mongo "${1}"
     fi
 }
+
+function vimgolian-status {
+    if (( ${#argv} < 1 )) ; then
+        echo 'usage: vimgolian-status mongouri' >&2
+        return 1
+    fi
+    (echo "rs.status()" | mongo "${1}" | sed -e 1,2d | head -n-1 | $PAGER ) || return 1
+
+}
