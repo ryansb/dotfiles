@@ -22,5 +22,22 @@ function vimgolian-status {
         return 1
     fi
     (echo "rs.status()" | mongo "${1}" | sed -e 1,2d | head -n-1 | $PAGER ) || return 1
+}
 
+function vimgolian-summary {
+    if (( ${#argv} < 1 )) ; then
+        echo 'usage: vimgolian-summary rsmem [p|s]' >&2
+        return 1
+    fi
+    PRE=${2-p}
+
+    DOMAIN=""
+    if [ "${PRE}" = "s" ] ; then
+        DOMAIN="app.staghudl.com"
+    else
+        DOMAIN="app.hudl.com"
+    fi
+
+    MONGO_HOST="${PRE}-mongo-rs${1}.${DOMAIN}:27018"
+    (echo "rs.status()" | mongo "${MONGO_HOST}" | grep stateStr | sed -e 's/^.*: "\(.*\)".*$/\1/' | sort | uniq -c) || return 1
 }

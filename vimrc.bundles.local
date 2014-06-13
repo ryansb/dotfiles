@@ -4,6 +4,7 @@ let g:spf13_bundle_groups=['general', 'programming', 'go', 'python', 'neocomplca
         "
 Bundle 'Tuurlijk/typofree.vim'
 
+Bundle 'gcmt/wildfire.vim'
 " General
     Bundle 'scrooloose/nerdtree'
     Bundle 'altercation/vim-colors-solarized'
@@ -58,13 +59,12 @@ Bundle 'Tuurlijk/typofree.vim'
     Bundle 'jnwhiteh/vim-golang'
     Bundle 'spf13/vim-gocode'
     " context-based completion
-    Bundle 'Blackrush/vim-gocode'
+    "Bundle 'Blackrush/vim-gocode'
     Bundle 'dgryski/vim-godef'
 
 " Misc
     Bundle 'tpope/vim-markdown'
     Bundle 'tpope/vim-cucumber'
-    Bundle 'godlygeek/tabular'
     Bundle 'quentindecock/vim-cucumber-align-pipes'
     Bundle 'spf13/vim-preview'
     Bundle 'Puppet-Syntax-Highlighting'
