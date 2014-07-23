@@ -6,8 +6,8 @@
 	ci = commit
 	br = branch
 	co = checkout
-	lol = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --date=relative
+	lol = log  --graph --abbrev-commit --decorate --date=relative --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	lola = log --graph --abbrev-commit --decorate --date=relative --all --pretty=oneline
 	ls = log --color --graph --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen(%cr) %C(blue)[%an]%Creset' --abbrev-commit --all
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --numstat
 	l1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --numstat -1
@@ -46,10 +46,11 @@
 		untracked = red
 [core]
 	pager = less -R
-
 [push]
 	default = simple
-[github]
-	user = ryansb
 [help]
 	autocorrect = 1
+[github]
+	user = ryansb
+[gitreview]
+	username = ryansb
