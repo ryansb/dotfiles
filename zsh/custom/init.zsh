@@ -9,6 +9,6 @@ if (( $#hackmodes > 0 )); then
   zstyle ':filter-select' max-lines 5
   zstyle ':filter-select' case-insensitive yes
 
-  source ~/.dotfiles/zsh/custom/berkshelf/berkshelf.plugin.zsh
+  #source ~/.dotfiles/zsh/custom/berkshelf/berkshelf.plugin.zsh
 fi
 unset hackmodes
