@@ -1,7 +1,8 @@
 let g:override_spf13_bundles="nopnopenope"
+
 let g:spf13_bundle_groups=['general', 'programming', 'go', 'python', 'neocomplcache', "misc"]
-        "let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'neocomplcache']
-        "
+"let g:spf13_bundle_groups=['general', 'programming', 'python', 'javascript', 'html', 'neocomplcache']
+
 Bundle 'Tuurlijk/typofree.vim'
 
 Bundle 'gcmt/wildfire.vim'
@@ -45,13 +46,11 @@ Bundle 'gcmt/wildfire.vim'
 " Javascript
     Bundle 'elzr/vim-json'
     Bundle 'groenewege/vim-less'
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'kchmck/vim-coffee-script'
 
 " HTML
     Bundle 'amirh/HTML-AutoCloseTag'
     Bundle 'hail2u/vim-css3-syntax'
-    Bundle 'tpope/vim-haml'
+    "Bundle 'tpope/vim-haml'
     Bundle 'ap/vim-css-color'
     Bundle 'atourino/jinja.vim'
 
@@ -64,7 +63,4 @@ Bundle 'gcmt/wildfire.vim'
 
 " Misc
     Bundle 'tpope/vim-markdown'
-    Bundle 'tpope/vim-cucumber'
-    Bundle 'quentindecock/vim-cucumber-align-pipes'
     Bundle 'spf13/vim-preview'
-    Bundle 'Puppet-Syntax-Highlighting'
