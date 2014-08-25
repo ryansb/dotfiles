@@ -74,6 +74,12 @@ alias chkansible="find . -name '*.yml' -not -path './roles/\*/files/\*' | xargs 
 
 alias tm="tmux"
 
+alias psd="python setup.py develop"
+alias psi="python setup.py install"
+
+# remove HTML tags from file or in a pipeline
+alias nohtml="awk '{gsub(\"<[^>]*>\", \"\")}1'"
+
 # taskwarrior
 alias t="task"
 alias thudl="task add +hudl"
