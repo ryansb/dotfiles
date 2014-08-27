@@ -85,4 +85,9 @@ alias t="task"
 alias thudl="task add +hudl"
 alias ta="task add"
 
+# Edit specfiles
+alias vspec="vim ./*.spec"
+# super fast makefile editing
+alias vmake="vim ./Makefile"
+
 xsource ~/.dotfiles/zsh/extrafuncs/*.zsh
