@@ -67,16 +67,27 @@ function jql {
 }
 alias jqn="/usr/local/bin/jq"
 
-alias shuffledir="mplayer -novideo -playlist <(find \$PWD -type f|sort -R)"
+alias shuffledir="mplayer -quiet -novideo -playlist <(find \$PWD -type f|sort -R)"
 alias musicfind="grep -R --include=\"*.txt\" "
 alias dupfind="find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-"
 alias chkansible="find . -name '*.yml' -not -path './roles/\*/files/\*' | xargs -t -n1 ansible-playbook --syntax-check"
 
 alias tm="tmux"
 
+alias psd="python setup.py develop"
+alias psi="python setup.py install"
+
+# remove HTML tags from file or in a pipeline
+alias nohtml="awk '{gsub(\"<[^>]*>\", \"\")}1'"
+
 # taskwarrior
 alias t="task"
 alias thudl="task add +hudl"
 alias ta="task add"
+
+# Edit specfiles
+alias vspec="vim ./*.spec"
+# super fast makefile editing
+alias vmake="vim ./Makefile"
 
 xsource ~/.dotfiles/zsh/extrafuncs/*.zsh

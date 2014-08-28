@@ -41,9 +41,7 @@ typeset -gU cdpath fpath mailpath path manpath
 #   $cdpath
 # )
 
-export AWS_CREDENTIAL_FILE="/etc/boto.aws.cfg"
-
-source ~/.zshenv.hudl 2>/dev/null
+#export AWS_CREDENTIAL_FILE="/etc/boto.aws.cfg"
 
 export GOROOT="$HOME/.golang"
 export GOPATH="$HOME/remotes"

@@ -9,9 +9,3 @@ ssh = ssh -C
 latest = log --limit 5
 pu = pull -u
 c = commit
-
-[hostfingerprints]
-bitbucket.org = 81:2b:08:90:dc:d3:71:ee:e0:7c:b4:75:ce:9b:6c:48:94:56:a1:fe
-bitbucket.org = 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
-bitbucket.org = 81:2b:08:90:dc:d3:71:ee:e0:7c:b4:75:ce:9b:6c:48:94:56:a1:fe
-bitbucket.org = 24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b
