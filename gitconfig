@@ -1,6 +1,7 @@
 [user]
 	name = Ryan S. Brown
 	email = sb@ryansb.com
+	signingkey = sb@ryansb.com
 [alias]
 	st = status
 	ci = commit
