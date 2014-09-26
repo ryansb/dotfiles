@@ -6,6 +6,9 @@ let g:spf13_bundle_groups=['general', 'programming', 'go', 'python', 'neocomplca
 Bundle 'Tuurlijk/typofree.vim'
 
 Bundle 'gcmt/wildfire.vim'
+
+Bundle "richsoni/vim-ecliptic"
+
 " General
     Bundle 'scrooloose/nerdtree'
     Bundle 'altercation/vim-colors-solarized'
@@ -21,8 +24,6 @@ Bundle 'gcmt/wildfire.vim'
     Bundle 'flazz/vim-colorschemes'
     Bundle 'vim-scripts/Gundo'
     Bundle 'myusuf3/numbers.vim'
-    Bundle 'benmills/vimux'
-    Bundle 'julienr/vimux-pyutils'
 
 " General Programming
     Bundle 'scrooloose/syntastic'
