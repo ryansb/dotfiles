@@ -52,6 +52,7 @@ path=(
   /usr/local/{bin,sbin,heroku/bin}
   $GOPATH/bin
   $GOROOT/bin
+  $HOME/.local/bin
   $HOME/.rvm/bin
   /usr/local/heroku/bin
 )
