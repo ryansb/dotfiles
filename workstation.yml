@@ -64,6 +64,7 @@
     action: yum name=$item state=latest
     with_items:
       - levien-inconsolata-fonts
+      - pcaro-hermit-fonts
       - msimonson-anonymouspro-fonts
       - terminus-fonts
       - terminus-fonts-console
