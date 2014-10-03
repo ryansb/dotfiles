@@ -53,7 +53,7 @@ export KEYTIMEOUT=1
 xsource /usr/bin/virtualenvwrapper.sh
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
+alias rmpyc='find . -name "*.pyc" -delete ; find . -name "__pycache__" -delete'
 
 ### aliases
 # systems stuff
