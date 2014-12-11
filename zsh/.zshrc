@@ -82,7 +82,9 @@ alias nohtml="awk '{gsub(\"<[^>]*>\", \"\")}1'"
 
 # taskwarrior
 alias t="task"
-alias thudl="task add +hudl"
+alias twerk="task +work"
+alias twork="task +work"
+alias tplay="task -work"
 alias ta="task add"
 
 # Edit specfiles
