@@ -55,6 +55,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 alias rmpyc='find . -name "*.pyc" -delete ; find . -name "__pycache__" -delete'
 
+# git aliases
+alias rmignored="git status --ignored -z | sed -z -e '/^[^!]/d' -e 's/^!! //' | xargs -0 rm -r"
+
 ### aliases
 # systems stuff
 alias llog="sudo tail -f /var/log/messages -n46" # colorized live log
