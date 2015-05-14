@@ -57,6 +57,7 @@ alias rmpyc='find . -name "*.pyc" -delete ; find . -name "__pycache__" -delete'
 
 # git aliases
 alias rmignored="git status --ignored -z | sed -z -e '/^[^!]/d' -e 's/^!! //' | xargs -0 rm -r"
+alias gchild='git checkout $(git log --ancestry-path --format=%H ${commit}..master | tail -1)'
 
 ### aliases
 # systems stuff
@@ -85,6 +86,7 @@ alias nohtml="awk '{gsub(\"<[^>]*>\", \"\")}1'"
 
 # taskwarrior
 alias t="task"
+alias tn="task -later"
 alias twerk="task +work"
 alias twork="task +work"
 alias tplay="task -work"
