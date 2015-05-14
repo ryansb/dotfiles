@@ -3,7 +3,8 @@
   hosts: fedora-workstations
   tasks:
   - name: install dev tools
-    action: yum name=$item state=latest
+    sudo: True
+    yum: name={{ item }} state=latest
     with_items:
       - ranger
     tags:
@@ -11,9 +12,10 @@
 
 - name: email clients
   hosts: workstations
+  sudo: True
   tasks:
   - name: install mail software
-    action: yum name=$item state=latest
+    yum: name={{ item }} state=latest
     with_items:
       - msmtp
       - offlineimap
@@ -22,7 +24,8 @@
   hosts: workstations
   tasks:
   - name: install dev tools
-    action: yum name=$item state=latest
+    sudo: True
+    yum: name={{ item }} state=latest
     with_items:
       - vim-enhanced
       - tmux
@@ -61,7 +64,8 @@
       - packages
 
   - name: install user stuff
-    action: yum name=$item state=latest
+    yum: name={{ item }} state=latest
+    sudo: True
     with_items:
       - levien-inconsolata-fonts
       - pcaro-hermit-fonts
@@ -78,6 +82,7 @@
     tags:
       - packages
   - name: imgur CLI
+    sudo: True
     shell: creates=/usr/local/bin/imgur curl http://imgur.com/tools/imgurbash.sh > /usr/local/bin/imgur ; chmod a+x /usr/local/bin/imgur
 
   - name: Determining username
@@ -86,28 +91,31 @@
     sudo: False
 
   - name: Changing the default shell to zsh
-    user: shell=/bin/zsh user=${whoami.stdout}
+    sudo: True
+    user: shell=/bin/zsh user={{whoami.stdout}}
 
 - name: gui workstation installation tasks (sudo access required)
   hosts: gui-workstations
+  sudo: True
   tasks:
   - name: install gui tools
-    yum: name=$item state=latest
+    yum: name={{ item }} state=latest
     with_items:
-      - cmus
+      #- cmus
       - gnome-tweak-tool
     tags:
       - packages
       - gui
 
   - name: install nonfree programs and tools
-    shell: yum -y --nogpgcheck localinstall $item
+    shell: yum -y --nogpgcheck localinstall {{ item }}
     with_items:
       - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm # Google Chrome
-      - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-19.noarch.rpm # rpmfusion
-      - https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-1.6.0-1.fedora.x86_64.rpm # dropbox
-      - http://download.virtualbox.org/virtualbox/4.2.16/VirtualBox-4.2-4.2.16_86992_fedora18-1.x86_64.rpm # VBox
-      - http://files.vagrantup.com/packages/95d308caaecd139b8f62e41e7add0ec3f8ae3bd1/vagrant_1.2.3_x86_64.rpm # Vagrant
+      - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-21.noarch.rpm # rpmfusion free
+      - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-21.noarch.rpm # rpmfusion nonfree
+      - https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-1.6.2-1.fedora.x86_64.rpm # dropbox
+      #- http://download.virtualbox.org/virtualbox/4.2.16/VirtualBox-4.2-4.2.16_86992_fedora18-1.x86_64.rpm # VBox
+      - https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.rpm # Vagrant
     tags:
       - packages
       - gui
@@ -127,7 +135,7 @@
     # git: repo=ssh://git@github.com/ryansb/dotfiles.git dest=~/.dotfiles
 
   - name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
-    shell: creates=~/.spf13-vim-3 chdir=~/ curl http://j.mp/spf13-vim3 -L -o - | sh
+    shell: creates=~/.spf13-vim-3 chdir=~/ curl https://raw.githubusercontent.com/spf13/spf13-vim/3.0/bootstrap.sh -L -o - | sh
 
   - file: src=~/.dotfiles/zsh/.zshrc dest=~/.zshrc state=link
   - file: src=~/.dotfiles/zsh/.zlogin dest=~/.zlogin state=link
@@ -137,7 +145,7 @@
   - file: src=~/.dotfiles/zsh/.zprezto/runcoms/zprofile dest=~/.dotfiles/zsh/.zprofile state=link
 
   - name: making misc symlinks
-    file: src=~/.dotfiles/$item dest=~/.$item state=link
+    file: src=~/.dotfiles/{{ item }} dest=~/.{{ item }} state=link
     with_items:
       - tmux
       - gitconfig
@@ -162,6 +170,8 @@
   - name: compiling golang
     shell: creates=~/.golang chdir=~/.golang/src ~/.golang/src/make.bash
 
+  - name: trusting rvm gpg key
+    shell: creates=~/.rvm gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
   - name: installing rvm
     shell: creates=~/.rvm chdir=~/ curl -L https://get.rvm.io | bash -s stable --ruby
 
@@ -175,7 +185,7 @@
 
   tasks:
   - name: grabbing libssl.so.6 for dependencies
-    yum: name=$item state=latest
+    yum: name={{ item }} state=latest
     with_items:
       - ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/6.0/x86_64/os/Packages/openssl098e-0.9.8e-17.el6.x86_64.rpm # for libssl.so.6 cleanup when possible
       - http://packages.couchbase.com/releases/2.0.1/couchbase-server-community_x86_64_2.0.1.rpm
