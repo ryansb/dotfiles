@@ -97,4 +97,6 @@ alias vspec="vim ./*.spec"
 # super fast makefile editing
 alias vmake="vim ./Makefile"
 
+alias stdoutjack="sudo strace -e trace=write -e write=1,2 -p " # <PID> hook into stdout and stderr of a running process
+
 xsource ~/.dotfiles/zsh/extrafuncs/*.zsh
