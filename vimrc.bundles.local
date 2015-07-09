@@ -63,5 +63,5 @@ Bundle "richsoni/vim-ecliptic"
     Bundle 'dgryski/vim-godef'
 
 " Misc
-    Bundle 'tpope/vim-markdown'
+    Bundle 'plasticboy/vim-markdown'
     Bundle 'spf13/vim-preview'
